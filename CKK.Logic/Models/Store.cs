@@ -8,7 +8,7 @@ namespace CKK.Logic.Models
 {
     public class Store
     {
-        private int ID;
+        private int Id;
         private string Name;
         private Product Product1;
         private Product Product2;
@@ -16,12 +16,12 @@ namespace CKK.Logic.Models
 
         public int GetId()
         {
-            return ID;
+            return Id;
         }
 
-        public void SetID(int id)
+        public void SetId(int id)
         {
-            ID = id;
+            Id = id;
         }
 
         public string GetName()
