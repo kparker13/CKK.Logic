@@ -1,12 +1,12 @@
-﻿namespace CKK.Logic
+﻿namespace CKK.Logic.Models
 {
     public class StoreItem
     {
-        
+
         private Product Product;
         private int Quantity;
 
-        
+
         public StoreItem(Product product, int quantity)
         {
             Product = product;
@@ -15,11 +15,11 @@
 
         public int GetQuantity()
 
-        { 
+        {
             return Quantity;
         }
 
-        public void SetQuantity(int quantity) 
+        public void SetQuantity(int quantity)
         {
             Quantity = quantity;
         }

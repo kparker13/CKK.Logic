@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
-namespace CKK.Logic
+namespace CKK.Logic.Models
 {
     public class Product
     {

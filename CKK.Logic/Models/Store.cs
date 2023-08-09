@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CKK.Logic
+namespace CKK.Logic.Models
 {
     public class Store
     {
@@ -15,23 +15,23 @@ namespace CKK.Logic
         private Product Product3;
 
         public int GetId()
-        { 
+        {
             return ID;
         }
 
-        public void SetID(int id) 
+        public void SetID(int id)
         {
             ID = id;
         }
 
-        public string GetName() 
+        public string GetName()
         {
             return Name;
         }
 
-        public void SetName(string name) 
+        public void SetName(string name)
         {
-            
+
             Name = name;
         }
 
@@ -53,13 +53,13 @@ namespace CKK.Logic
             { Console.WriteLine("No available product spots"); }
         }
 
-        public void RemoveStoreItem(int productNumber) 
+        public void RemoveStoreItem(int productNumber)
         {
             if (productNumber == 1)
             {
                 Product1 = null;
             }
-            else if (productNumber == 2) 
+            else if (productNumber == 2)
             {
                 Product2 = null;
             }

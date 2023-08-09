@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CKK.Logic
+namespace CKK.Logic.Models
 {
     public class Customer
     {
@@ -12,26 +12,26 @@ namespace CKK.Logic
         private string Name;
         private string Address;
 
-        public int GetId() 
+        public int GetId()
         {
             return Id;
         }
 
-        public void SetId(int id) 
+        public void SetId(int id)
         {
             Id = id;
         }
 
-        public string GetName() 
-        { 
+        public string GetName()
+        {
             return Name;
         }
 
         public void SetName(string name)
-        { 
+        {
             Name = name;
         }
-        
+
         public string GetAddress()
         {
             return Address;
@@ -39,8 +39,8 @@ namespace CKK.Logic
 
         public void SetAddress(string address)
         {
-            Address = address;  
+            Address = address;
         }
-       
+
     }
 }
