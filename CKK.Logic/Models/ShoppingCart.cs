@@ -141,9 +141,9 @@ namespace CKK.Logic.Models
             {
                 return _Product2;
             }
-            else if (_Product2.GetProduct().GetId() == prodNum)
+            else if (_Product3.GetProduct().GetId() == prodNum)
             {
-                return _Product2;
+                return _Product3;
             }
             return null;
         }
