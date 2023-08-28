@@ -41,10 +41,9 @@ namespace CKK.Logic.Models
                 from item in Items
                 where item.GetProduct().Equals(prod)
                 select item;
-
-            if (doesContain.Any())
+            var tempProd = doesContain.FirstOrDefault();
+            if (tempProd != null)
             {
-                var tempProd = doesContain.First();
                 tempProd.SetQuantity(quantity += tempProd.GetQuantity());
                 return tempProd;
             }

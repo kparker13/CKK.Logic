@@ -75,7 +75,7 @@ namespace CKK.Logic.Models
             return null;
         }
 
-        public List<ShoppingCartItem> GetProducts(int prodNum) 
+        public List<ShoppingCartItem> GetProducts() 
         {
             return ShoppingCartItems;
         }
