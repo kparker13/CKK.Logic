@@ -28,6 +28,7 @@ namespace CKK.Logic.Models
                 from item in ShoppingCartItems
                 where item.GetProduct().GetId() == id
                 select item;
+  
             return isThere.FirstOrDefault();
         }
         public ShoppingCartItem AddProduct(Product prod)
