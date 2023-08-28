@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,9 +11,7 @@ namespace CKK.Logic.Models
     {
         private int Id;
         private string Name;
-        private Product Product1;
-        private Product Product2;
-        private Product Product3;
+        private List<StoreItem> Items;
 
         public int GetId()
         {
@@ -35,77 +34,51 @@ namespace CKK.Logic.Models
             Name = name;
         }
 
-        public void AddStoreItem(Product prod)
+        public StoreItem AddStoreItem(Product prod, int quantity)
         {
-            if (Product1 == null)
+
+            var doesContain =
+                from item in Items
+                where item.GetProduct().Equals(prod)
+                select item;
+
+            if (doesContain.Any())
             {
-                Product1 = prod;
+                var tempProd = doesContain.First();
+                tempProd.SetQuantity(quantity += tempProd.GetQuantity());
+                return tempProd;
             }
-            else if (Product2 == null)
-            {
-                Product2 = prod;
-            }
-            else if (Product3 == null)
-            {
-                Product3 = prod;
-            }
-            else
-            { Console.WriteLine("No available product spots"); }
+            return new StoreItem(prod, quantity);
         }
 
-        public void RemoveStoreItem(int productNumber)
+        public StoreItem RemoveStoreItem(int id, int quantity)
         {
-            if (productNumber == 1)
+            var itemSelect =
+                from item in Items
+                where item.GetProduct().GetId() == id
+                select item;
+            var changingItem = itemSelect.First();
+            if (changingItem.GetQuantity() - quantity <= 0) 
             {
-                Product1 = null;
+                changingItem.SetQuantity(0);
+                return changingItem;
             }
-            else if (productNumber == 2)
-            {
-                Product2 = null;
-            }
-            else if (productNumber == 3)
-            {
-                Product3 = null;
-            }
+            changingItem.SetQuantity(changingItem.GetQuantity() - quantity);
+            return changingItem;
         }
 
-        public Product GetStoreItem(int productNumber)
+        public List<StoreItem> GetStoreItems()
         {
-            if (productNumber == 1)
-            {
-                return Product1;
-            }
-            else if (productNumber == 2)
-            {
-                return Product2;
-            }
-            else if (productNumber == 3)
-            {
-                return Product3;
-            }
-            else
-                return null;
+            return Items;
         }
 
         public Product FindStoreItemById(int id)
         {
-            if (Product1.GetId() == id)
-            {
-                return Product1;
-            }
-
-            else if (Product2.GetId() == id)
-            {
-                return Product2;
-            }
-
-            else if (Product3.GetId() == id)
-            {
-                return Product3;
-            }
-
-            else
-                return null;
+            var itemFound =
+                from item in Items
+                where item.GetProduct().GetId().Equals(id)
+                select item;
+            return itemFound.First().GetProduct();
         }
     }
 }
