@@ -47,8 +47,6 @@ namespace CKK.Logic.Models
                 where item.GetProduct() == prod
                 select item;
             var product = isThere.FirstOrDefault();
-            if (quantity > 0)
-            {
                 if (product != null)
                 {
                     product.SetQuantity(quantity += product.GetQuantity());
@@ -56,8 +54,8 @@ namespace CKK.Logic.Models
                 }
                 var newItem = new ShoppingCartItem(prod, quantity);
                 ShoppingCartItems.Add(newItem); 
-            }
-            return null;
+                return newItem;
+            
         }
 
         
