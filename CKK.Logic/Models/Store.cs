@@ -36,7 +36,10 @@ namespace CKK.Logic.Models
 
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
-
+            if (quantity < 0)
+            {
+                return null;
+            }
             var doesContain =
                 from item in Items
                 where item.GetProduct().Equals(prod)
@@ -45,6 +48,7 @@ namespace CKK.Logic.Models
             if (tempItem != null)
             {
                 tempItem.SetQuantity(quantity += tempItem.GetQuantity());
+                Items.Add(tempItem);
                 return tempItem;
             }
             var newItem = new StoreItem(prod, quantity);
@@ -58,7 +62,7 @@ namespace CKK.Logic.Models
                 from item in Items
                 where item.GetProduct().GetId() == id
                 select item;
-            var changingItem = itemSelect.First();
+            var changingItem = itemSelect.FirstOrDefault();
             if (changingItem.GetQuantity() - quantity <= 0) 
             {
                 changingItem.SetQuantity(0);
@@ -79,7 +83,7 @@ namespace CKK.Logic.Models
                 from item in Items
                 where item.GetProduct().GetId().Equals(id)
                 select item;
-            return itemFound.First();
+            return itemFound.FirstOrDefault();
         }
     }
 }
