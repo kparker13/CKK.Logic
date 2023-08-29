@@ -43,20 +43,25 @@ namespace CKK.Logic.Models
                 where item.GetProduct() == prod
                 select item;
             var product = isThere.FirstOrDefault();
-            if (product != null)
+            if (quantity > 0)
             {
-                product.SetQuantity(quantity += product.GetQuantity());
-                return product;
+                if (product != null)
+                {
+                    product.SetQuantity(quantity += product.GetQuantity());
+                    return product;
+                }
+                var newItem = new ShoppingCartItem(prod, quantity);
+                ShoppingCartItems.Add(newItem); 
             }
-            return new ShoppingCartItem(prod, quantity);
+            return null;
         }
 
         
-        public ShoppingCartItem RemoveProduct(Product prod, int quantity) 
+        public ShoppingCartItem RemoveProduct(int id, int quantity) 
         {
             var isThere =
                 from item in ShoppingCartItems
-                where item.GetProduct() == prod
+                where item.GetProduct().GetId() == id
                 select item;
             var product = isThere.FirstOrDefault();
             if (product != null) 
@@ -86,7 +91,7 @@ namespace CKK.Logic.Models
             var total = 0.0M;
             foreach (var item in ShoppingCartItems)
             {
-                total += item.GetQuantity() * item.GetQuantity();
+                total += item.GetQuantity() * item.GetProduct().GetPrice();
             }
             return total;
         }

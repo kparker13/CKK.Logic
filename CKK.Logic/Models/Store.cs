@@ -11,7 +11,7 @@ namespace CKK.Logic.Models
     {
         private int Id;
         private string Name;
-        private List<StoreItem> Items;
+        private List<StoreItem> Items = new();
 
         public int GetId()
         {
@@ -47,7 +47,9 @@ namespace CKK.Logic.Models
                 tempItem.SetQuantity(quantity += tempItem.GetQuantity());
                 return tempItem;
             }
-            return new StoreItem(prod, quantity);
+            var newItem = new StoreItem(prod, quantity);
+            Items.Add(newItem);
+            return newItem;
         }
 
         public StoreItem RemoveStoreItem(int id, int quantity)
@@ -71,13 +73,13 @@ namespace CKK.Logic.Models
             return Items;
         }
 
-        public Product FindStoreItemById(int id)
+        public StoreItem FindStoreItemById(int id)
         {
             var itemFound =
                 from item in Items
                 where item.GetProduct().GetId().Equals(id)
                 select item;
-            return itemFound.First().GetProduct();
+            return itemFound.First();
         }
     }
 }
