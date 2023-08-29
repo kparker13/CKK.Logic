@@ -48,7 +48,6 @@ namespace CKK.Logic.Models
             if (tempItem != null)
             {
                 tempItem.SetQuantity(quantity += tempItem.GetQuantity());
-                Items.Add(tempItem);
                 return tempItem;
             }
             var newItem = new StoreItem(prod, quantity);
