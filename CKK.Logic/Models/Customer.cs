@@ -9,39 +9,13 @@ namespace CKK.Logic.Models
 {
     public class Customer : Entity
     {
-        private int Id;
-        private string Name;
-        private string Address;
 
-        public int GetId()
+        private string address;
+
+        public string Address 
         {
-            return Id;
+            get { return address; } 
+            set {  address = value; }
         }
-
-        public void SetId(int id)
-        {
-            Id = id;
-        }
-
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public void SetName(string name)
-        {
-            Name = name;
-        }
-
-        public string GetAddress()
-        {
-            return Address;
-        }
-
-        public void SetAddress(string address)
-        {
-            Address = address;
-        }
-
     }
 }

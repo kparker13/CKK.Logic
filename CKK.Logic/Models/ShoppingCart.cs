@@ -19,14 +19,14 @@ namespace CKK.Logic.Models
 
         public int GetCustomerId()
         {
-            return Customer.GetId();
+            return Customer.Id;
         }
 
         public ShoppingCartItem GetProductById(int id)
         {
             var isThere =
                 from item in ShoppingCartItems
-                where item.GetProduct().GetId() == id
+                where item.Product.Id == id
                 select item;
   
             return isThere.FirstOrDefault();
@@ -44,12 +44,12 @@ namespace CKK.Logic.Models
             }
             var isThere =
                 from item in ShoppingCartItems
-                where item.GetProduct() == prod
+                where item.Product == prod
                 select item;
             var product = isThere.FirstOrDefault();
                 if (product != null)
                 {
-                    product.SetQuantity(quantity += product.GetQuantity());
+                    product.Quantity += quantity;
                     return product;
                 }
                 var newItem = new ShoppingCartItem(prod, quantity);
@@ -63,20 +63,20 @@ namespace CKK.Logic.Models
         {
             var isThere =
                 from item in ShoppingCartItems
-                where item.GetProduct().GetId() == id
+                where item.Product.Id == id
                 select item;
             var product = isThere.FirstOrDefault();
             if (product != null) 
             { 
-                if (product.GetQuantity() > quantity)
+                if (product.Quantity > quantity)
                 {
-                    product.SetQuantity(product.GetQuantity() - quantity);
+                    product.Quantity - quantity);
                     return product;
                 }
-                else if (product.GetQuantity() <= quantity) 
+                else if (product.Quantity <= quantity) 
                 {
                     ShoppingCartItems.Remove(product);
-                    product.SetQuantity(0);
+                    product.Quantity = 0;
                     return product;
                 }
             }
@@ -93,7 +93,7 @@ namespace CKK.Logic.Models
             var total = 0.0M;
             foreach (var item in ShoppingCartItems)
             {
-                total += item.GetQuantity() * item.GetProduct().GetPrice();
+                total += item.Quantity * item.Product.Price;
             }
             return total;
         }

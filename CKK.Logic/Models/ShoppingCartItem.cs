@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -8,10 +9,8 @@ using System.Xml.Linq;
 
 namespace CKK.Logic.Models
 {
-    public class ShoppingCartItem
+    public class ShoppingCartItem : InventoryItem
     {
-        private Product Product;
-        private int Quantity;
 
         public ShoppingCartItem(Product product, int quantity)
         {
@@ -19,29 +18,9 @@ namespace CKK.Logic.Models
             Quantity = quantity;
         }
 
-        public int GetQuantity()
-        {
-            return Quantity;
-        }
-
-        public void SetQuantity(int quantity)
-        {
-            Quantity = quantity;
-        }
-
-        public Product GetProduct()
-        {
-            return Product;
-        }
-
-        public void SetProduct(Product product)
-        {
-            Product = product;
-        }
-
         public decimal GetTotal()
         {
-            return Quantity * Product.GetPrice();
+            return Quantity * Product.Price;
 
         }
     }

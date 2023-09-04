@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
@@ -7,32 +8,9 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class Store
+    public class Store : Entity
     {
-        private int Id;
-        private string Name;
         private List<StoreItem> Items = new();
-
-        public int GetId()
-        {
-            return Id;
-        }
-
-        public void SetId(int id)
-        {
-            Id = id;
-        }
-
-        public string GetName()
-        {
-            return Name;
-        }
-
-        public void SetName(string name)
-        {
-
-            Name = name;
-        }
 
         public StoreItem AddStoreItem(Product prod, int quantity)
         {
