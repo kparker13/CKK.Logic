@@ -74,7 +74,7 @@ namespace CKK.Logic.Models
             { 
                 if (product.Quantity > quantity)
                 {
-                    product.Quantity - quantity);
+                    product.Quantity -= quantity;
                     return product;
                 }
                 else if (product.Quantity <= quantity) 
