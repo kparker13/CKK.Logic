@@ -8,7 +8,7 @@ namespace CKK.Logic.Models
 {
     public class ShoppingCart
     {
-        private Customer Customer;
+        private Customer customer;
         private List<ShoppingCartItem> ShoppingCartItems;
 
         public ShoppingCart(Customer cust)
@@ -16,6 +16,10 @@ namespace CKK.Logic.Models
             Customer = cust;
             ShoppingCartItems = new List<ShoppingCartItem>();
         }
+
+        public Customer Customer { get; set; }
+
+        public Product Products { get; set; }
 
         public int GetCustomerId()
         {
