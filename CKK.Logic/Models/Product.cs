@@ -22,7 +22,7 @@ namespace CKK.Logic.Models
             {
                 if (price < 0)
                 {
-                    throw new ArgumentOutOfRangeException;
+                    throw new ArgumentOutOfRangeException();
                 }
                 price = value;
                 
