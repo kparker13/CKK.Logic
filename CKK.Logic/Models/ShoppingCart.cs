@@ -10,7 +10,6 @@ namespace CKK.Logic.Models
 {
     public class ShoppingCart : IShoppingCart
     {
-        private Customer customer;
         private List<ShoppingCartItem> ShoppingCartItems;
 
         public ShoppingCart(Customer cust)

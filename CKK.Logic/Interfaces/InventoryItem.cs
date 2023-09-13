@@ -22,6 +22,7 @@ namespace CKK.Logic.Interfaces
                 {
                     throw new InventoryItemStockTooLowException();
                 }
+                quantity = value;
             }
         }  
     }
