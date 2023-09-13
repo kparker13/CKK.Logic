@@ -18,10 +18,8 @@ namespace CKK.Logic.Interfaces
             {
                 if (value <= 0)
                 { id = value; }
-                else 
-                {
-                    throw new InvalidIdException("Id must be greater than or equal to zero");
-                }
+                throw new InvalidIdException();
+                
             }
         }
         public string Name { get; set; }
