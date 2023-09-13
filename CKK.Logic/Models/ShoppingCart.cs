@@ -1,5 +1,5 @@
-﻿using CKK.Logic.Interfaces;
-using CKK.Logic.Exceptions;
+﻿using CKK.Logic.Exceptions;
+using CKK.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -50,7 +50,7 @@ namespace CKK.Logic.Models
         {
             if (quantity < 0)
             {
-                throw new ArgumentOutOfRangeException;
+                throw new ArgumentOutOfRangeException();
             }
             var isThere =
                 from item in ShoppingCartItems
