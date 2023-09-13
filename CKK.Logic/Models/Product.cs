@@ -13,21 +13,17 @@ namespace CKK.Logic.Models
     public class Product : Entity
     {
 
-        private decimal price;
-
         public decimal Price
         { 
-            get { return price; } 
+            get { return Price; } 
             set 
             {
-                if (price > 0.0M)
+                if (Price > 0.0M)
                 {
-                    price = value;
+                    Price = value;
                 }
-                else
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
+                throw new ArgumentOutOfRangeException();
+
             }
         }
         
