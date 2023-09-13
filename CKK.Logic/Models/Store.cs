@@ -46,7 +46,7 @@ namespace CKK.Logic.Models
             {
                 throw new ProductDoesNotExistException();
             }
-            if (changingItem.Quantity - quantity == 0) 
+            if (changingItem.Quantity - quantity <= 0) 
             {
                 changingItem.Quantity = 0;
                 return changingItem;
