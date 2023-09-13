@@ -47,7 +47,7 @@ namespace CKK.Logic.Models
 
         public ShoppingCartItem AddProduct(Product prod, int quantity)
         {
-            if (quantity < 0)
+            if (quantity <= 0)
             {
                 throw new ArgumentOutOfRangeException();
             }
@@ -70,7 +70,7 @@ namespace CKK.Logic.Models
         
         public ShoppingCartItem RemoveProduct(int id, int quantity) 
         {
-            if (quantity > 0)
+            if (quantity >= 0)
             {
                 var isThere =
                     from item in ShoppingCartItems
