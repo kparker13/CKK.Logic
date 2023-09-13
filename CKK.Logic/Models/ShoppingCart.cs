@@ -1,4 +1,5 @@
-﻿using CKK.Logic.Exceptions;
+﻿using CKK.Logic.Interfaces;
+using CKK.Logic.Exceptions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class ShoppingCart
+    public class ShoppingCart : IShoppingCart
     {
         private Customer customer;
         private List<ShoppingCartItem> ShoppingCartItems;

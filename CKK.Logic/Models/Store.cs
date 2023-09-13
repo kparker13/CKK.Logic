@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class Store : Entity
+    public class Store : Entity, IStore
     {
         private List<StoreItem> Items = new();
 
