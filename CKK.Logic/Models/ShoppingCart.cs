@@ -49,7 +49,7 @@ namespace CKK.Logic.Models
         {
             if (quantity <= 0)
             {
-                throw new ArgumentOutOfRangeException();
+                throw new InventoryItemStockTooLowException();
             }
             var isThere =
                 from item in ShoppingCartItems
