@@ -1,4 +1,5 @@
-﻿using CKK.Logic.Interfaces;
+﻿using CKK.Logic.Exceptions;
+using CKK.Logic.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,10 @@ namespace CKK.Logic.Models
                 if (price > 0.0M)
                 {
                     price = value;
+                }
+                else
+                {
+                    throw new ArgumentOutOfRangeException();
                 }
             }
         }

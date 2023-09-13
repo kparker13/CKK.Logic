@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CKK.Logic.Exceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -28,12 +29,16 @@ namespace CKK.Logic.Models
 
         public ShoppingCartItem GetProductById(int id)
         {
-            var isThere =
-                from item in ShoppingCartItems
-                where item.Product.Id == id
-                select item;
-  
-            return isThere.FirstOrDefault();
+            if (id >= 0)
+            {
+                var isThere =
+                    from item in ShoppingCartItems
+                    where item.Product.Id == id
+                    select item;
+
+                return isThere.FirstOrDefault();
+            }
+            throw new InvalidIdException();
         }
         public ShoppingCartItem AddProduct(Product prod)
         {
@@ -44,7 +49,7 @@ namespace CKK.Logic.Models
         {
             if (quantity < 0)
             {
-                return null;
+                throw new ArgumentOutOfRangeException;
             }
             var isThere =
                 from item in ShoppingCartItems
@@ -65,26 +70,30 @@ namespace CKK.Logic.Models
         
         public ShoppingCartItem RemoveProduct(int id, int quantity) 
         {
-            var isThere =
-                from item in ShoppingCartItems
-                where item.Product.Id == id
-                select item;
-            var product = isThere.FirstOrDefault();
-            if (product != null) 
-            { 
-                if (product.Quantity > quantity)
+            if (quantity > 0)
+            {
+                var isThere =
+                    from item in ShoppingCartItems
+                    where item.Product.Id == id
+                    select item;
+                var product = isThere.FirstOrDefault();
+                if (product != null)
                 {
-                    product.Quantity -= quantity;
-                    return product;
+                    if (product.Quantity > quantity)
+                    {
+                        product.Quantity -= quantity;
+                        return product;
+                    }
+                    else if (product.Quantity <= quantity)
+                    {
+                        ShoppingCartItems.Remove(product);
+                        product.Quantity = 0;
+                        return product;
+                    }
                 }
-                else if (product.Quantity <= quantity) 
-                {
-                    ShoppingCartItems.Remove(product);
-                    product.Quantity = 0;
-                    return product;
-                }
+                throw new ProductDoesNotExistException();
             }
-            return null;
+            throw new ArgumentOutOfRangeException();
         }
 
         public List<ShoppingCartItem> GetProducts() 
