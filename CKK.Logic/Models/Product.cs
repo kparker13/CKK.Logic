@@ -20,14 +20,12 @@ namespace CKK.Logic.Models
             get { return price; } 
             set 
             {
-                if (price > 0.0M)
+                if (price < 0)
                 {
-                    price = value;
+                    throw new ArgumentOutOfRangeException;
                 }
-                else
-                {
-                    throw new ArgumentOutOfRangeException();
-                }
+                price = value;
+                
             }
         }
         
