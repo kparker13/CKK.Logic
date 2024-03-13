@@ -69,5 +69,16 @@ namespace CKK.Logic.Models
                 select item;
             return itemFound.FirstOrDefault();
         }
+
+
+        public void DeleteStoreItem(int id)
+        {
+            try
+            {
+                Items.Remove(FindStoreItemById(id));
+                
+            }
+            catch { throw new ProductDoesNotExistException(); }
+        }
     }
 }

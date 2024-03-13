@@ -9,6 +9,11 @@ namespace CKK.Logic.Models
             Product = product;
             Quantity = quantity;
         }
+
+        public override string ToString()
+        {
+            return $"{this.Product.Id} {this.Product.Name} : {this.Quantity}";
+        }
     }
 }
 
