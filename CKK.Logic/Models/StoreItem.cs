@@ -2,6 +2,7 @@
 
 namespace CKK.Logic.Models
 {
+    [Serializable]
     public class StoreItem : InventoryItem
     {
         public StoreItem(Product product, int quantity)

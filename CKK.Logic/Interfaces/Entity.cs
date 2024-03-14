@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Interfaces
 {
+    [Serializable]
     public abstract class Entity
     {
         protected int id;

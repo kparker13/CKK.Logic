@@ -9,6 +9,7 @@ using System.Xml.Linq;
 
 namespace CKK.Logic.Models
 {
+    [Serializable]
     public class ShoppingCartItem : InventoryItem
     {
 
