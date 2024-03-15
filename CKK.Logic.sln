@@ -5,9 +5,18 @@ VisualStudioVersion = 17.6.33829.357
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CKK.Logic", "CKK.Logic\CKK.Logic.csproj", "{1844129B-EE8C-4E36-B2D2-1CA575017FF8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKK.UI", "CKK.UI\CKK.UI.csproj", "{1FB1E4C6-9476-4CE3-A7CC-9DE3E6CFA7D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CKK.UI", "CKK.UI\CKK.UI.csproj", "{1FB1E4C6-9476-4CE3-A7CC-9DE3E6CFA7D9}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1844129B-EE8C-4E36-B2D2-1CA575017FF8} = {1844129B-EE8C-4E36-B2D2-1CA575017FF8}
+		{2D4C7A13-BC37-4E29-83AB-89A4AF3D0322} = {2D4C7A13-BC37-4E29-83AB-89A4AF3D0322}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CKK.Persistence", "CKK.Persistence\CKK.Persistence.csproj", "{2D4C7A13-BC37-4E29-83AB-89A4AF3D0322}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CKK.Persistence", "CKK.Persistence\CKK.Persistence.csproj", "{2D4C7A13-BC37-4E29-83AB-89A4AF3D0322}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4383B7F-B081-4739-917D-B82AE9B61589}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

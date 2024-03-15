@@ -41,6 +41,10 @@
             removeItemBox = new TextBox();
             removeButton = new Button();
             itemsBox = new ComboBox();
+            quantSortButton = new Button();
+            costSortButton = new Button();
+            saveButton = new Button();
+            load = new Button();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
@@ -68,7 +72,7 @@
             // 
             itemsLabel.AutoSize = true;
             itemsLabel.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            itemsLabel.Location = new Point(598, 88);
+            itemsLabel.Location = new Point(521, 88);
             itemsLabel.Name = "itemsLabel";
             itemsLabel.Size = new Size(155, 31);
             itemsLabel.TabIndex = 2;
@@ -130,7 +134,7 @@
             // 
             removeItemLabel.AutoSize = true;
             removeItemLabel.Font = new Font("Segoe UI", 13.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            removeItemLabel.Location = new Point(606, 233);
+            removeItemLabel.Location = new Point(627, 243);
             removeItemLabel.Name = "removeItemLabel";
             removeItemLabel.Size = new Size(147, 31);
             removeItemLabel.TabIndex = 9;
@@ -138,17 +142,17 @@
             // 
             // removeItemBox
             // 
-            removeItemBox.Location = new Point(580, 277);
+            removeItemBox.Location = new Point(649, 277);
             removeItemBox.Name = "removeItemBox";
             removeItemBox.PlaceholderText = "Enter ID";
-            removeItemBox.Size = new Size(194, 27);
+            removeItemBox.Size = new Size(125, 27);
             removeItemBox.TabIndex = 10;
             // 
             // removeButton
             // 
-            removeButton.Location = new Point(622, 322);
+            removeButton.Location = new Point(649, 310);
             removeButton.Name = "removeButton";
-            removeButton.Size = new Size(117, 29);
+            removeButton.Size = new Size(125, 29);
             removeButton.TabIndex = 11;
             removeButton.Text = "Remove Item";
             removeButton.UseVisualStyleBackColor = true;
@@ -157,16 +161,59 @@
             // itemsBox
             // 
             itemsBox.FormattingEnabled = true;
-            itemsBox.Location = new Point(580, 130);
+            itemsBox.Location = new Point(521, 130);
             itemsBox.Name = "itemsBox";
-            itemsBox.Size = new Size(194, 28);
+            itemsBox.Size = new Size(253, 28);
             itemsBox.TabIndex = 12;
+            // 
+            // quantSortButton
+            // 
+            quantSortButton.Location = new Point(521, 164);
+            quantSortButton.Name = "quantSortButton";
+            quantSortButton.Size = new Size(125, 34);
+            quantSortButton.TabIndex = 13;
+            quantSortButton.Text = "Sort by Quantity";
+            quantSortButton.UseVisualStyleBackColor = true;
+            quantSortButton.Click += quantSortButton_Click;
+            // 
+            // costSortButton
+            // 
+            costSortButton.Location = new Point(649, 164);
+            costSortButton.Name = "costSortButton";
+            costSortButton.Size = new Size(125, 34);
+            costSortButton.TabIndex = 14;
+            costSortButton.Text = "Sort by Cost";
+            costSortButton.UseVisualStyleBackColor = true;
+            costSortButton.Click += costSortButton_Click;
+            // 
+            // saveButton
+            // 
+            saveButton.Location = new Point(528, 401);
+            saveButton.Name = "saveButton";
+            saveButton.Size = new Size(125, 36);
+            saveButton.TabIndex = 15;
+            saveButton.Text = "Save";
+            saveButton.UseVisualStyleBackColor = true;
+            saveButton.Click += saveButton_Click;
+            // 
+            // load
+            // 
+            load.Location = new Point(660, 401);
+            load.Name = "load";
+            load.Size = new Size(114, 34);
+            load.TabIndex = 16;
+            load.Text = "Load";
+            load.UseVisualStyleBackColor = true;
             // 
             // InventoryManagementForm
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(load);
+            Controls.Add(saveButton);
+            Controls.Add(costSortButton);
+            Controls.Add(quantSortButton);
             Controls.Add(itemsBox);
             Controls.Add(removeButton);
             Controls.Add(removeItemBox);
@@ -202,5 +249,9 @@
         private TextBox removeItemBox;
         private Button removeButton;
         private ComboBox itemsBox;
+        private Button quantSortButton;
+        private Button costSortButton;
+        private Button saveButton;
+        private Button load;
     }
 }

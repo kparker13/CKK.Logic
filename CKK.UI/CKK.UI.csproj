@@ -9,11 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\CKK.Logic\CKK.Logic.csproj" />
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
+    <ProjectReference Include="..\CKK.Logic\CKK.Logic.csproj" />
   </ItemGroup>
 
 </Project>
