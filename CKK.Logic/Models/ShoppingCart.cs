@@ -8,24 +8,20 @@ using System.Threading.Tasks;
 
 namespace CKK.Logic.Models
 {
-    public class ShoppingCart : IShoppingCart
+    public class ShoppingCart
     {
-        private List<ShoppingCartItem> ShoppingCartItems;
 
         public ShoppingCart(Customer cust)
         {
             Customer = cust;
-            ShoppingCartItems = new List<ShoppingCartItem>();
         }
+		public List<ShoppingCartItem> ShoppingCartItems { get; set; };
+		public int ShoppingCartId { get; set; }
+		public Customer Customer { get; set; }
 
-        public Customer Customer { get; set; }
+		public Product Products { get; set; }
 
-        public Product Products { get; set; }
-
-        public int GetCustomerId()
-        {
-            return Customer.Id;
-        }
+		public int CustomerId { get; set; }
 
         public ShoppingCartItem GetProductById(int id)
         {
