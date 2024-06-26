@@ -1,35 +1,27 @@
+using CKK.DB.Interfaces;
+using CKK.DB.UOW;
 using CKK.Logic;
 using CKK.Logic.Interfaces;
 using CKK.Logic.Models;
 using System.Collections.ObjectModel;
+using System.Data;
 namespace CKK.UI
 {
     public partial class InventoryManagementForm : Form
-    { 
-        private IStore Store;
-        public List<StoreItem> items { get; set; }
+    {
+        public DatabaseConnectionFactory ConnectionFactory { get; set; }
+        public UnitOfWork workingUnit { get; set; }
         public string? refreshArea { get; set; }
         public InventoryManagementForm()
         {
-            Store = new Store();
-            items = Store.GetStoreItems();
+            ConnectionFactory = new DatabaseConnectionFactory();
+            workingUnit = new UnitOfWork(ConnectionFactory);
             InitializeComponent();
-            foreach (StoreItem item in items)
-            {
-                itemsBox.Items.Add(item);
-            }
+            workingUnit.Products.GetAll().ForEach(product => { itemsBox.Items.Add(product); });
         }
          
         private void refreshItems(string area)
         {
-            items = Store.GetStoreItems();
-            foreach (StoreItem item in items)
-            {
-                if (!itemsBox.Items.Contains(item.ToString())) 
-                {
-                    itemsBox.Items.Add(item.ToString());
-                }
-            }
             if (area == "new")
             {
                 itemNameBox.Text = string.Empty;
@@ -51,7 +43,7 @@ namespace CKK.UI
                 product.Name = itemNameBox.Text;
                 product.Price = Decimal.Parse(itemPriceBox.Text);
                 product.Id = int.Parse(itemIdBox.Text);
-                Store.AddStoreItem(product, int.Parse(itemQuantityBox.Text));
+                workingUnit.Products.Add(product);
                 refreshArea = "new";
                 refreshItems(refreshArea);
             }
@@ -66,7 +58,8 @@ namespace CKK.UI
         {
             try
             {
-                Store.DeleteStoreItem(int.Parse(removeItemBox.Text));
+                //Store.DeleteStoreItem(int.Parse(removeItemBox.Text));
+                workingUnit.Products.Delete(workingUnit.Products.GetById(int.Parse(removeItemBox.Text)));
                 refreshArea = "delete";
                 refreshItems(refreshArea);
             }

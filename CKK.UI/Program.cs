@@ -14,7 +14,6 @@ namespace CKK.UI
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new InventoryManagementForm());
-            Store store = new Store();
         }
     }
 }

@@ -14,7 +14,7 @@ namespace CKK.Persistence.Models
     internal class FileStore : IStore, ISavable, ILoadable
     {
         public String FilePath {  get; private set; }
-        private List<StoreItem> Items;
+        //private List<StoreItem> Items;
         private int IdCounter;
         public FileStore() 
         {
@@ -24,86 +24,86 @@ namespace CKK.Persistence.Models
 
         public void DeleteStoreItem(int id) { }
 
-        public List<StoreItem> GetStoreItems()
-        {
-            return Items;
-        }
+        //public List<StoreItem> GetStoreItems()
+        //{
+        //    return Items;
+        //}
 
-        public StoreItem AddStoreItem(Product prod, int quantity)
-        {
-            try
-            {
-                var newItem = new StoreItem(prod, quantity);
-                foreach (var item in Items)
-                {
-                    if (!Items.Contains(newItem))
-                    {
-                        Items.Add(newItem);
-                    }
-                    else item.Quantity += quantity;
-                }
-                return newItem;
-            }
-            catch
-            {
-                if (quantity <= 0)
-                {
-                    throw new InventoryItemStockTooLowException();
-                }
-                else throw;
-            }
-        }
+        //public StoreItem AddStoreItem(Product prod, int quantity)
+        //{
+        //    try
+        //    {
+        //        var newItem = new StoreItem(prod, quantity);
+        //        foreach (var item in Items)
+        //        {
+        //            if (!Items.Contains(newItem))
+        //            {
+        //                Items.Add(newItem);
+        //            }
+        //            else item.Quantity += quantity;
+        //        }
+        //        return newItem;
+        //    }
+        //    catch
+        //    {
+        //        if (quantity <= 0)
+        //        {
+        //            throw new InventoryItemStockTooLowException();
+        //        }
+        //        else throw;
+        //    }
+        //}
 
-        public StoreItem RemoveStoreItem(int id, int quantity)
-        {
-            try
-            {
-                var foundItem = FindStoreItemById(id);
-                if (foundItem != null)
-                {
-                    if (foundItem.Quantity > quantity)
-                    {
-                        foundItem.Quantity -= quantity;
-                    }
-                    else if (foundItem.Quantity < quantity) 
-                    {
-                        foundItem.Quantity = 0;
-                    }
-                }
-                return foundItem;
-            }
-            catch
-            {
-                if (quantity <= 0)
-                {
-                    throw new InventoryItemStockTooLowException();
-                }
-                else throw;
-            }
-        }  
+        //public StoreItem RemoveStoreItem(int id, int quantity)
+        //{
+        //    try
+        //    {
+        //        var foundItem = FindStoreItemById(id);
+        //        if (foundItem != null)
+        //        {
+        //            if (foundItem.Quantity > quantity)
+        //            {
+        //                foundItem.Quantity -= quantity;
+        //            }
+        //            else if (foundItem.Quantity < quantity) 
+        //            {
+        //                foundItem.Quantity = 0;
+        //            }
+        //        }
+        //        return foundItem;
+        //    }
+        //    catch
+        //    {
+        //        if (quantity <= 0)
+        //        {
+        //            throw new InventoryItemStockTooLowException();
+        //        }
+        //        else throw;
+        //    }
+        //}  
 
-        public StoreItem FindStoreItemById(int id)
-        {
-            try
-            {
-                foreach (var item in Items)
-                {
-                    if (item.Product.Id == id)
-                    {
-                        return item;
-                    }
-                }
-                return null;
-            }
-            catch
-            {
-                if (id <= 0)
-                {
-                    throw new IndexOutOfRangeException();
-                }
-                else throw;
-            }
-        }
+        //public StoreItem FindStoreItemById(int id)
+        //{
+        //    try
+        //    {
+        //        foreach (var item in Items)
+        //        {
+        //            if (item.Product.Id == id)
+        //            {
+        //                return item;
+        //            }
+        //        }
+        //        return null;
+        //    }
+        //    catch
+        //    {
+        //        if (id <= 0)
+        //        {
+        //            throw new IndexOutOfRangeException();
+        //        }
+        //        else throw;
+        //    }
+        //}
 
         public void CreatePath()
         {
@@ -125,35 +125,35 @@ namespace CKK.Persistence.Models
 
         }
 
-        public void Save()
-        {
-            try
-            {
-                BinaryFormatter bf = new BinaryFormatter();
-                FileStream output = new FileStream("StoreSaveFile", FileMode.OpenOrCreate, FileAccess.Write);
-                var content = GetStoreItems();
-                bf.Serialize(output, content);
-                output.Close();
-            }
-            catch
-            {
-                throw;
-            }
-        }
+        //public void Save()
+        //{
+        //    try
+        //    {
+        //        BinaryFormatter bf = new BinaryFormatter();
+        //        FileStream output = new FileStream("StoreSaveFile", FileMode.OpenOrCreate, FileAccess.Write);
+        //        var content = GetStoreItems();
+        //        bf.Serialize(output, content);
+        //        output.Close();
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
 
-        public void Load()
-        {
-            try
-            {
-                FileStream input = new FileStream("StoreSaveFile", FileMode.Open, FileAccess.Read);
-                BinaryFormatter bf = new BinaryFormatter();
-                Items = (List<StoreItem>) bf.Deserialize(input);
-            }
-            catch
-            {
-                throw;
-            }
-        }
+        //public void Load()
+        //{
+        //    try
+        //    {
+        //        FileStream input = new FileStream("StoreSaveFile", FileMode.Open, FileAccess.Read);
+        //        BinaryFormatter bf = new BinaryFormatter();
+        //        //Items = (List<StoreItem>) bf.Deserialize(input);
+        //    }
+        //    catch
+        //    {
+        //        throw;
+        //    }
+        //}
     }
 
 }
